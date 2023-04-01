@@ -1,0 +1,21 @@
+  
+  .coche {
+    position: relative;
+    display: block;
+    width: 150px;
+    padding-top: 20px;
+    margin-left: 0px;
+  }
+  .pistaCarreras{
+    background: url(../img/track.png) left repeat-x;
+    background-size: 75% 100%;
+    height: 120px;
+    border-right: dashed 10px orange;
+    box-sizing: border-box;
+    margin-bottom: 5px;
+
+  }
+  #bodyCarrera{
+    background-color: gainsboro;
+  }
+ 
