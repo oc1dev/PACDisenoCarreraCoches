@@ -1,11 +1,17 @@
 $(document).ready(function () {
+    
+    //definimos variables globales
+    
     let participantes_num = $("#cars").val();
+    //podium para los que van llegando
     let podium = [];
+    //ancho pantalla
     var ancho_pantalla = $(window).width();
+    //linea de meta
     var lineaMeta = ancho_pantalla - 160;
 
 
-    //cargamos Array con coches segun numero de participantes
+    //cargamos Array con coches segun numero de participantes con sus url
 
     $("#cars").change(function () {
         //primero limpiamos por si ya existian pistas
@@ -27,50 +33,37 @@ $(document).ready(function () {
             let nuevoCoche = document.createElement("img");
             nuevaPista.className = "pistaCarreras";
             nuevoCoche.src = url;
-            nuevoCoche.className = "coche" + (index + 1) + " coche";
+            nuevoCoche.className = "coche";
+            nuevoCoche.id="car" + (index + 1);
             nuevaPista.append(nuevoCoche);
             participante.append(nuevaPista);
         });
     });
 
-    //ahora vamos con la animacion de los coches
-
-
+    //Iniciamos carrera con el click
     $("#arrancar").click(function prueba() {
-        //ancho de la pantalla
-
-
-
-        //longitud a recorrer 
-
-
-        //definimos numero de participantes y array para podium
-
-
-
-
-        //avance de cada coche
+        
+        //reseteamos podium por si no estaba a cero de anterior carrera
         podium=[];
+        //funcion para mover los coches
         avanceCoches();
-
-
-
 
     });
     function avanceCoches() {
         for (let i = 1; i <= participantes_num; i++) {
-
+            //tiempo random que cada coche tarda en recorrer el trayecto
             let tirada = Math.floor(Math.random() * 10) + 1;
+            //modificador para ajustar la velocidad
             let tiempo = tirada * 75;
-            $(".coche" + i).animate({ "left": lineaMeta+"px" }, tiempo, llegaMeta(i));
-
+            //funcion de animate incluye llegameta conforme acaban la carrera
+            $("#car" + i).animate({ "left": lineaMeta+"px" }, tiempo, llegaMeta);
 
         }
 
     }
-
-    function llegaMeta(i) {
-        podium.push("car" + i + ".png");
+    //guarda en array los coches segun orden de llegada a meta
+    function llegaMeta() {
+        podium.push(this.id);
         if (podium.length==participantes_num){
             $("#prueba").html(podium);
         }
