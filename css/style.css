@@ -4,7 +4,7 @@
     display: block;
     width: 150px;
     padding-top: 20px;
-    margin-left: 0px;
+    left: 0px;
   }
   .pistaCarreras{
     background: url(../img/track.png) left repeat-x;
@@ -19,3 +19,6 @@
     background-color: gainsboro;
   }
  
+  #body{
+    margin: 0px;
+  }
