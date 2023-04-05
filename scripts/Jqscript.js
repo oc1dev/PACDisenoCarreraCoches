@@ -105,7 +105,7 @@ $(document).ready(function () {
             //eliminamos tabla previa
             $(".quitame").remove();
             //la ocultamos para poder hacer efecto de fadeIn
-            $('#prueba').hide();
+            $('#tablaAqui').hide();
             //creamos tabla de podium
             var table = $('<table>').addClass('quitame');
             var thead=$("<thead>");
@@ -124,8 +124,8 @@ $(document).ready(function () {
                 table.append(row);
             }
 
-            $('#prueba').append(table);
-            $('#prueba').fadeIn(2000);
+            $('#tablaAqui').append(table);
+            $('#tablaAqui').fadeIn(2000);
         }
     }
 
