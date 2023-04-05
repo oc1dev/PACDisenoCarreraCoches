@@ -78,7 +78,7 @@ background-color: #4CAF50;
 }
 #prueba{
   position: absolute;
-  top: 10%;
+  top: 130px;
   left: 44%;
-
+  display: none;
 }

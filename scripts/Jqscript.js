@@ -53,9 +53,10 @@ $(document).ready(function () {
         $("#reiniciar").show();
         //reseteamos podium por si no estaba a cero de carreras previas
         podium = [];
-        //funcion para mover los coches
+       
         //eliminamos tabla previa
         $(".quitame").remove();
+         //funcion para mover los coches
         avanceCoches();
 
     });
@@ -80,6 +81,11 @@ $(document).ready(function () {
     };
 
     function avanceCoches() {
+         //Reajustamos ancho pantalla por si ha cambiado
+         ancho_pantalla = $(window).width();
+         //linea de meta
+         lineaMeta = ancho_pantalla - 160;
+        
         for (let i = 1; i <= participantes_num; i++) {
             //tiempo random que cada coche tarda en recorrer el trayecto
             let tirada = Math.floor(Math.random() * 10) + 1;
@@ -98,6 +104,8 @@ $(document).ready(function () {
         if (podium.length == participantes_num) {
             //eliminamos tabla previa
             $(".quitame").remove();
+            //la ocultamos para poder hacer efecto de fadeIn
+            $('#prueba').hide();
             //creamos tabla de podium
             var table = $('<table>').addClass('quitame');
             var thead=$("<thead>");
@@ -117,6 +125,7 @@ $(document).ready(function () {
             }
 
             $('#prueba').append(table);
+            $('#prueba').fadeIn(2000);
         }
     }
 
