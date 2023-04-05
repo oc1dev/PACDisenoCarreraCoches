@@ -33,9 +33,11 @@
   border: 2px solid rgb(70, 69, 69);
   width: 30%;
   margin-left: 35%;
+  background-color: #4CAF50;
+  color: gainsboro;
 }
 #header {
-  background-color: rgba(0, 153, 255, 0.671);
+  background-image: url(../img/arbolitos.png);
   border:  dashed;
   border-color: rgb(211, 69, 69);
 
@@ -49,13 +51,14 @@
   background-color: #4CAF50;;
   width: 30%;
   margin: 10px;
+  color: gainsboro;
   
 }
 #arrancar:active, #reiniciar:active {
   background-color: #3e8e41;
   transform: translateY(4px);
 }
-#arrancar:hover, #reiniciar:hover {
+#arrancar:hover, #reiniciar:hover, #elSelect:hover {
   background-color: #3e8e41
 }
 #body{

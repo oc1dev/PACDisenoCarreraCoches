@@ -1,7 +1,7 @@
 $(document).ready(function () {
-    
+
     //definimos variables globales
-    
+
     let participantes_num = $("#cars").val();
     //podium para los que van llegando
     let podium = [];
@@ -34,7 +34,7 @@ $(document).ready(function () {
             nuevaPista.className = "pistaCarreras";
             nuevoCoche.src = url;
             nuevoCoche.className = "coche";
-            nuevoCoche.id="car" + (index + 1);
+            nuevoCoche.id = "car" + (index + 1);
             nuevaPista.append(nuevoCoche);
             participante.append(nuevaPista);
         });
@@ -46,22 +46,26 @@ $(document).ready(function () {
         $("#arrancar").hide();
         $("#reiniciar").show();
         //reseteamos podium por si no estaba a cero de carreras previas
-        podium=[];
+        podium = [];
         //funcion para mover los coches
+        //eliminamos tabla previa
+        $(".quitame").remove();
         avanceCoches();
 
     });
     //boton de reinicio
-    $("#reiniciar").click(function(){
+    $("#reiniciar").click(function () {
         //mostramos arrancar y ocultamos reinicio
         $("#arrancar").show();
         $("#reiniciar").hide();
+        //eliminamos tabla previa
+        $(".quitame").remove();
         reinicioCoches();
 
     });
-    function reinicioCoches(){
+    function reinicioCoches() {
         for (let i = 1; i <= participantes_num; i++) {
-            
+
             //funcion de animate para volver coches al inicio
             $("#car" + i).animate({ "left": "0px" }, 2000);
 
@@ -74,9 +78,9 @@ $(document).ready(function () {
             //tiempo random que cada coche tarda en recorrer el trayecto
             let tirada = Math.floor(Math.random() * 10) + 1;
             //modificador para ajustar la velocidad
-            let tiempo = tirada * 75;
+            let tiempo = tirada * 150;
             //funcion de animate incluye llegameta conforme acaban la carrera
-            $("#car" + i).animate({ "left": lineaMeta+"px" }, tiempo, llegaMeta);
+            $("#car" + i).animate({ "left": lineaMeta + "px" }, tiempo, llegaMeta);
 
         }
 
@@ -84,8 +88,27 @@ $(document).ready(function () {
     //guarda en array los coches segun orden de llegada a meta
     function llegaMeta() {
         podium.push(this.id);
-        if (podium.length==participantes_num){
-            $("#prueba").html(podium);
+        //crear tabla podium
+        if (podium.length == participantes_num) {
+            //eliminamos tabla previa
+            $(".quitame").remove();
+            //creamos tabla de podium
+            var table = $('<table>').addClass('quitame');
+            var thead=$("<thead>");
+
+            thead.append($("<td>").text("COCHE"));
+            thead.append($("<td>").text("PUESTO"));
+            table.append(thead);
+            for (i = 0; i <participantes_num; i++) {
+                var row = $('<tr>');
+                
+                row.append($("<td>").text(podium[i]));
+                row.append($("<td>").text(i+1));
+                
+                table.append(row);
+            }
+
+            $('#prueba').append(table);
         }
     }
 
