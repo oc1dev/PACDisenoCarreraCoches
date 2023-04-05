@@ -1,25 +1,63 @@
-  
-  .coche {
-    position: relative;
-    display: block;
-    width: 150px;
-    padding-top: 20px;
-    left: 0px;
-  }
-  .pistaCarreras{
-    background: url(../img/track.png) left repeat-x;
-    background-size: 75% 100%;
-    height: 120px;
-    border-right: dashed 10px orange;
-    box-sizing: border-box;
-    margin-bottom: 5px;
+.coche {
+  position: relative;
+  display: block;
+  width: 150px;
+  padding-top: 20px;
+  margin-left: 0px;
+}
+.pistaCarreras {
+  background: url(../img/track.png) left repeat-x;
+  background-size: 75% 100%;
+  height: 120px;
+  border-right: dashed 10px orange;
+  box-sizing: border-box;
+  margin-bottom: 5px;
+}
+#bodyCarrera {
+  background-color: gainsboro;
+}
 
-  }
-  #bodyCarrera{
-    background-color: gainsboro;
-  }
- 
-  #body{
-    margin: 0px;
-  }
+#body {
+  margin: 0px;
+}
+#botones {
+  text-align: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+#elSelect {
+  text-align: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bold;
+  border-radius: 12px;
+  font-size: 14px;
+  border: 2px solid rgb(70, 69, 69);
+  width: 30%;
+  margin-left: 35%;
+}
+#header {
+  background-color: rgba(0, 153, 255, 0.671);
+  border:  dashed;
+  border-color: rgb(211, 69, 69);
+
+}
+#arrancar, #reiniciar{
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bold;
+  border-radius: 12px;
+  font-size: 14px;
+  border: 2px solid #3e8e41;
+  background-color: #4CAF50;;
+  width: 30%;
+  margin: 10px;
   
+}
+#arrancar:active, #reiniciar:active {
+  background-color: #3e8e41;
+  transform: translateY(4px);
+}
+#arrancar:hover, #reiniciar:hover {
+  background-color: #3e8e41
+}
+#body{
+  background-color: gainsboro;
+}

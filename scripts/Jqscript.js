@@ -41,14 +41,34 @@ $(document).ready(function () {
     });
 
     //Iniciamos carrera con el click
-    $("#arrancar").click(function prueba() {
-        
-        //reseteamos podium por si no estaba a cero de anterior carrera
+    $("#arrancar").click(function () {
+        //mostramos el boton de reinicio y ocultamos el de arrancar
+        $("#arrancar").hide();
+        $("#reiniciar").show();
+        //reseteamos podium por si no estaba a cero de carreras previas
         podium=[];
         //funcion para mover los coches
         avanceCoches();
 
     });
+    //boton de reinicio
+    $("#reiniciar").click(function(){
+        //mostramos arrancar y ocultamos reinicio
+        $("#arrancar").show();
+        $("#reiniciar").hide();
+        reinicioCoches();
+
+    });
+    function reinicioCoches(){
+        for (let i = 1; i <= participantes_num; i++) {
+            
+            //funcion de animate para volver coches al inicio
+            $("#car" + i).animate({ "left": "0px" }, 2000);
+
+        }
+
+    };
+
     function avanceCoches() {
         for (let i = 1; i <= participantes_num; i++) {
             //tiempo random que cada coche tarda en recorrer el trayecto
