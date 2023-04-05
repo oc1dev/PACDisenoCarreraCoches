@@ -14,8 +14,14 @@ $(document).ready(function () {
     //cargamos Array con coches segun numero de participantes con sus url
 
     $("#cars").change(function () {
+        //si no es la primera carrera hay que cambiar el boton
+        $("#arrancar").show();
+        $("#reiniciar").hide();
+        
         //primero limpiamos por si ya existian pistas
         $(".pistaCarreras").remove();
+        //eliminamos tabla previa de podium
+        $(".quitame").remove();
         //Obtenemos numero de participantes
         participantes_num = $("#cars").val();
         //declaramos array a rellenar segun ejercicio
@@ -97,13 +103,15 @@ $(document).ready(function () {
             var thead=$("<thead>");
 
             thead.append($("<td>").text("COCHE"));
-            thead.append($("<td>").text("PUESTO"));
+            thead.append($("<td>").text("POSICIÓN"));
             table.append(thead);
             for (i = 0; i <participantes_num; i++) {
                 var row = $('<tr>');
+                var td=($("<td>"));
+                td.append('<img src="img/'+podium[i]+'.png" class="coche"/>');
                 
-                row.append($("<td>").text(podium[i]));
-                row.append($("<td>").text(i+1));
+                row.append(td);
+                row.append($("<td>").text((i+1)+"º"));
                 
                 table.append(row);
             }
