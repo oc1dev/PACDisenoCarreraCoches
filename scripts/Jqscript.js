@@ -87,14 +87,21 @@ $(document).ready(function () {
          lineaMeta = ancho_pantalla - 160;
         
         for (let i = 1; i <= participantes_num; i++) {
-            //tiempo random que cada coche tarda en recorrer el trayecto
-            let tirada = Math.floor(Math.random() * 10) + 1;
-            //modificador para ajustar la velocidad
-            let tiempo = tirada * 150;
+            
             //funcion de animate incluye llegameta conforme acaban la carrera
-            $("#car" + i).animate({ "left": lineaMeta + "px" }, tiempo, llegaMeta);
+            $("#car" + i).animate({ "left": lineaMeta + "px" }, aleatorio(), llegaMeta);
 
         }
+
+    }
+
+    function aleatorio (){
+        //tiempo random que cada coche tarda en recorrer el trayecto, 10 tiradas sumadas
+        let tirada = 0;
+        for(let i=0; i<10;i++){
+            tirada+=(Math.floor(Math.random() * 10) + 1);
+        }
+        return tirada*50;//para hacer la carrera mas vistosa
 
     }
     //guarda en array los coches segun orden de llegada a meta
@@ -119,7 +126,7 @@ $(document).ready(function () {
                 td.append('<img src="img/'+podium[i]+'.png" class="coche"/>');
                 
                 row.append(td);
-                row.append($("<td>").text((i+1)+"º"));
+                row.append("<td>"+(i+1)+'º'+"</td>");
                 
                 table.append(row);
             }
